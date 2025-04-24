@@ -2,7 +2,7 @@
 
 // MY ACCOUNT
 %userSettingsAccountProfileCard {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: cv('bg.general.card');
 }
 %userSettingsAccountProfileBackground,
 %userSettingsAccountProfileFields {
@@ -10,22 +10,24 @@
 }
 %userSettingsAccountProfileAvatar {
   background: transparent;
-  border-color: transparent;
 }
-%accountSettingsBadges {
-  background-color: rgba(0, 0, 0, calc(var(--background-shading) * 0.4));
+%userSettingsAccountBadgeList {
+  background-color: cv('bg.general.card');
 }
 // MY ACCOUNT - VERIFY PHONE
-%phoneVerification {
+%phoneInput {
   background-color: hsla(0, 0%, 100%, 0.07);
   border: none;
   box-shadow: 0 0 0 2px hsla(0, 0%, 100%, 0.09);
   &:focus-within {
     box-shadow: 0 0 2px 2px $main-color;
   }
+  %phoneInputField {
+    background-color: transparent;
+  }
 }
-%phoneVerification %phoneVerificationInput {
-  background-color: transparent;
+%phoneInputCountryCodePopout {
+  background-color: cv('bg.general.popout');
 }
 
 // USER PROFILE
@@ -40,7 +42,11 @@
   padding: 0;
 }
 %avatarGifIconContainer {
-  background-color: $main-color;
+  background-color: hsla(0, 0%, 0%, 0.8);
+}
+%avatarGifIcon {
+  background-color: transparent;
+  color: #fff;
 }
 %avatarEditingContainer {
   background-color: transparent;
@@ -92,46 +98,22 @@
 
 // USER PROFILE - SERVER PROFILES UPSELL
 %userSettingsProfilePremiumBorder {
-  background: hsla(0, 0%, 0%, 0.4);
+  background: cv('bg.general.card');
   border: 2px solid var(--premium-tier-2-purple-for-gradients-2);
 }
 %userSettingsProfilePremiumBackground {
   background: transparent;
 }
-%userSettingsProfileUpsellOverlayContainer {
-  background: hsla(0, 0%, 0%, 0.4);
-  border: 2px solid var(--premium-tier-2-purple-for-gradients-2);
-}
-%themeDark {
-  %userSettingsProfileUpsellOverlay {
-    background: hsla(0, 0%, 0%, 0.4);
-  }
+%userSettingsProfileUpsellContainer {
+  background: cv('bg.general.card');
 }
 
-// PRIVACY AND SAFETY - STANDING
-%themeDark %userSettingsPrivacyStandingContainer%settingsCard {
-	background-color: transparent;
-}
-%userSettingsPrivacyStandingAvatarBG {
-  background-color: transparent;
-}
-%userSettingsPrivacyStandingLine,
-%userSettingsPrivacyStandingMarker {
-	background-color: hsla(0, 0%, 100%, .1);
-}
-%userSettingsPrivacyStandingMarker {
-  %userSettingsPrivacyStandingMarkerEmpty {
-    background-color: hsla(0, 0%, 100%, .1);
-  }
-  svg circle {
-    fill: #fff;
-  }
-}
+// PRIVACY AND SAFETY 
 
 // FAMILY CENTER
 %userSettingsFamilyContainers,
 %userSettingsFamilyBox {
-  background-color: hsla(0, 0%, 0%, 0.4);
+  background-color: cv('bg.general.card');
 }
 %userSettingsFamilyCircle,
 %userSettingsFamilyIconContainer {
@@ -153,7 +135,7 @@
 
 // CONNECTIONS
 %userSettingsConnectionsContainer {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: cv('bg.general.card');
   border-color: hsla(0, 0%, 100%, 0.07);
 }
 %userSettingsConnectionsButtonInner {
@@ -162,48 +144,48 @@
     background-color: hsla(0, 0%, 100%, 0.07);
   }
 }
+%subEnabledServers {
+  background: rgba(0, 0, 0, 0.6);
+}
 
 // BILLING
+%userSettingsBillingIndicator {
+  background-color: $main-color;
+}
+%userSettingsBillingMethodText {
+  color: var(--text-normal);
+}
+%userSettingsBillingPaymentPane {
+  background-color: cv('bg.general.card');
+}
+%userSettingsBillingPayment,
+%userSettingsBillingPaginator {
+  background-color: transparent;
+}
 %themeDark {
-  %userSettingsBillingIndicator {
-    background-color: $main-color;
-  }
-  %userSettingsBillingPaymentPane,
-  %userSettingsBillingPaginator {
-    background-color: transparent;
-  }
   %userSettingsBillingBottomDivider {
-    border-color: rgba(0, 0, 0, 0.07);
+    border-color: hsla(0, 0%, 100%, 0.07);
   }
   %userSettingsBillingHoverablePayment {
     &:hover {
       background-color: rgba(255, 255, 255, 0.05);
     }
   }
-  %userSettingsBillingPayment {
-    background-color: transparent;
-    &:not(%userSettingsBillingHoverablePayment) {
-      background-color: hsla(0, 0%, 0%, 0.4);
-    }
-  }
-  %userSettingsBillingExpandedInfo {
-    background-color: transparent;
-    box-shadow: 0 0 2px 2px $main-color;
-  }
-  %userSettingsBillingMethodText {
-    color: #fff;
-  }
+}
+%userSettingsBillingExpandedInfo {
+  background-color: transparent;
+  box-shadow: 0 0 2px 2px $main-color;
 }
 
 // NITRO
 %userSettingsNitroPerkCard {
-  background-color: hsla(0, 0%, 0%, .4);
+  background-color: cv('bg.general.card');
 }
 %userSettingsNitroGiftCard {
-  background: rgba(0, 0, 0, 0.4);
+  background: cv('bg.general.card');
 }
-%themeDark %userSettingsNitroShareCard {
-  background: rgba(0, 0, 0, 0.4);
+%userSettingsNitroShareCard {
+  background: cv('bg.general.card');
   backdrop-filter: none;
 }
 
@@ -211,28 +193,24 @@
 %themeDark {
   :is(%userSettingsSubsNoItemsIcons) {
     background-color: transparent;
-    > g > :is(path, rect, circle) {
-      fill-opacity: 0.8 !important;
-      stroke-opacity: 0.8 !important;
-    }
   }
 }
 %userSettingsSubsPayDetailsBlock {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: cv('bg.general.card');
 }
 %userSettingsSubsAccountCredit {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: cv('bg.general.card');
 }
 
 // GIFT INVENTORY
 %giftPromotionCard {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: cv('bg.general.card');
 }
 %copyGiftCode {
   background-color: hsla(0, 0%, 100%, 0.07);
 }
 %themeDark %giftQuestContainer {
-	background-color: rgba(0, 0, 0, 0.4);
+  background-color: cv('bg.general.card');
 }
 %giftQuestProgress {
   color: $main-color !important;
@@ -250,13 +228,20 @@
 %userSettingsBoostGuildSearchWrapper,
 %userSettingsBoostRecognitionCard,
 %userSettingsBoostFAQ {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: cv('bg.general.card');
 }
-%userSettingsBoostTransferSearch {
+%userSettingsBoostTransferSelect:hover {
   background-color: rgba(255, 255, 255, 0.07);
 }
 %userSettingsBoostTransferButton {
   background-color: $main-color;
+}
+%freeBoost {
+  background-color: cv('bg.general.card');
+}
+.content_c258fa:after,
+.content_c258fa:before {
+  border-color: transparent;
 }
 
 // APPEARANCE
@@ -281,8 +266,7 @@
   %userSettingsMicTest {
     %userSettingsMicTestContainer {
       background: $main-color !important;
-      mask-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='20' fill='yellow'%3E%3Cpath fill-rule='evenodd' d='M 4 2 C 2.895 2 2 2.895 2 4 L 2 16 C 2 17.54 3.667 18.502 5 17.732 C 5.619 17.375 6 16.715 6 16 L 6 4 C 6 2.895 5.105 2 4 2 Z'/%3E%3C/svg%3E");
-      -webkit-mask-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='20' fill='yellow'%3E%3Cpath fill-rule='evenodd' d='M 4 2 C 2.895 2 2 2.895 2 4 L 2 16 C 2 17.54 3.667 18.502 5 17.732 C 5.619 17.375 6 16.715 6 16 L 6 4 C 6 2.895 5.105 2 4 2 Z'/%3E%3C/svg%3E");
+      mask-image: url(https://clearvision.github.io/icons/pill.svg);
     }
     %userSettingsMicTestProgress {
       background-color: hsla(0, 0%, 0%, 0.7);
@@ -293,7 +277,14 @@
       }
     }
   }
+  %userSettingsVoiceSensitivity {
+    background-color: hsla(0, 0%, 100%, 0.2);
+    &%userSettingsVoiceSensitivitySpeaking {
+      background-color: $main-color;
+    }
+  }
 }
+
 %userSettingsEntranceSoundButton {
   background-color: hsla(0, 0%, 100%, 0.1);
 }
@@ -356,7 +347,7 @@
 // ACTIVITY STATUS
 %themeDark {
   %userSettingsActivityNotDetected {
-    background-color: hsla(0, 0%, 0%, 0.4);
+    background-color: cv('bg.general.card');
     border: hsla(0, 0%, 100%, 0.07);
   }
   %userSettingsActivityAddGame {
